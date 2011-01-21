@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html manifest="manifest.php">
+
+<head>
+
+	<link rel="apple-touch-icon" href="lib/apple-touch-icon.png">
+        <style type="text/css" media="screen">@import "lib/_styles.css";</style>
+
+        <script src="lib/jqtouch/jquery.1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="lib/jqtouch/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
+        <script src="lib/jqt.autotitles.js" type="application/x-javascript" charset="utf-8"></script>
+
+	<title>Offline Webapp | The CSS Ninja - All things CSS, Javascript &amp; xhtml</title>
+
+</head>
+<body>
+
+	<div id="loader">
+		<div class="loader">
+			<img src="lib/loader.gif" alt="Loading cache..." width="31" height="31" />
+		</div>
+	</div>
+
+	<div id="maincontainer">
+		<div id="content">
+			<div class="article">
+				<h2>Offline webapp</h2>
+				<p class="date">July 15, 2009</p>
+				<div class="clear">&nbsp;</div>
+				<p>
+					If you want to see this in action you should be loading this through your iPhone. The first time you load this the files specified in the manifest file will cache to your phone.
+				</p>
+				<p>
+					Enable Airplane mode to cut all network connections and reload this page. Watch as it loads without a problem.
+				</p>
+			</div>
+		</div>
+
+		<div class="clear">&nbsp;</div>
+	</div>
+
+	<script type="text/javascript">
+		(function(){
+			var webappCache = window.applicationCache,
+				loader,
+				simulateDownload,
+				pollingCacheStatus,
+				h2Title = document.querySelector("h2"),
+				connectionStatus = ((navigator.onLine) ? 'online' : 'offline');
+
+			loader = document.getElementById("loader").style;
+			h2Title.textContent = h2Title.textContent + " - currently: " + connectionStatus;
+			document.title = document.title.replace(" | "," - currently: " + connectionStatus + " | ");
+
+			switch (webappCache.status) {
+			case 0:
+				console.log("Cache status: Uncached");
+				break;
+			case 1:
+				console.log("Cache status: Idle");
+				break;
+			case 2:
+				console.log("Cache status: Checking");
+				break;
+			case 3:
+				console.log("Cache status: Downloading");
+				break;
+			case 4:
+				console.log("Cache status: Updateready");
+				break;
+			case 5:
+				console.log("Cache status: Obsolete");
+				break;
+			default:
+				console.log("Cache status: unknown");
+			}
+
+			function noupdateCache() {
+				loader.display = "none";
+				console.log("No update to cache found");
+			}
+			function doneCache() {
+				loader.display = "none";
+				console.log("Cache has finished downloading");
+			}
+			function progressCache() {
+				loader.display = "table";
+				console.log("Downloading cache...");
+			}
+			function updateCache() {
+				webappCache.swapCache();
+				console.log("Cache has been updated due to a change found in the manifest");
+				loader.display = "none";
+			}
+			function errorCache() {
+				console.log("You're either offline or something has gone horribly wrong.");
+			}
+			webappCache.addEventListener("progress", progressCache, false);
+			webappCache.addEventListener("cached", doneCache, false);
+			webappCache.addEventListener("noupdate", noupdateCache, false);
+			webappCache.addEventListener("updateready", updateCache, false);
+			webappCache.addEventListener("error", errorCache, false);
+		})();
+	</script>
+
+</body>
+</html>

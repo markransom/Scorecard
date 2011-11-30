@@ -1,6 +1,6 @@
 table.overview {
 	margin: 0 auto; 
-	border-width: 5px;
+	border-width: 2px;
 	border-spacing: ;
 	border-style: none;
 	border-color: gray;
@@ -9,8 +9,8 @@ table.overview {
 
 }
 table.overview th {
-	border-width: 5px;
-	padding: 5px;
+	border-width: 2px;
+	padding: 2px;
 	border-style: none;
 	border-color: #5A5D63;
 	background-color: #5A5D63;
@@ -18,10 +18,12 @@ table.overview th {
 }
 table.overview tr {
         text-align: center;     
+	height: 55px;
 }
 table.overview td {
-	border-width: 5px;
-	padding: 15px;
+	border-width: 2px;
+	min-width: 50px;
+	padding: 5px;
 	border-style: solid;
 	border-color: #5A5D63;
 	background-color: #000000;
@@ -29,7 +31,7 @@ table.overview td {
 }
 table.summary {
 	margin: 0 auto; 
-	border-width: 5px;
+	border-width: 2px;
 	border-spacing: ;
 	border-style: none;
 	border-color: gray;
@@ -38,8 +40,8 @@ table.summary {
 
 }
 table.summary th {
-	border-width: 5px;
-	padding: 5px;
+	border-width: 2px;
+	padding: 2px;
 	border-style: none;
 	border-color: #5A5D63;
 	background-color: #5A5D63;
@@ -48,12 +50,21 @@ table.summary tr {
         text-align: center;     
 }
 table.summary td {
-	border-width: 2px;
-	padding: 2px;
+	border-width: 1px;
+	padding: 1px;
 	border-style: solid;
 	border-color: #5A5D63;
 	background-color: #5A5D63;
-
+}
+#ovtable .ovcolumn {
+	border-color: #5A5D63;
+	background-color: #000;
+	color: #0f0;
+}
+#ovtotals .ovrow {
+	border-color: #5A5D63;
+	background-color: #000;
+	color: #f00;
 }
 input[class="score"] {
 	color:#fff;
@@ -67,7 +78,7 @@ input[class="score"] {
 	width: 20px;
 }
 ul li small {
-    width: 40%;
+    width: 35%;
 }
 
 #loader
@@ -96,12 +107,28 @@ ul li small {
 		-webkit-border-radius: 3px;
 		background-color: #5A5D63;
 }
+
 .ourClub, .oppPairFull {
     font: bold 18px Helvetica;
     text-shadow: rgba(255,255,255,.2) 0 1px 1px;
     color: #000;
     margin: 10px 20px 5px;
 }
+
+ul li.email {
+    background-image: url(img/envelope.png), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+
+ul li, ul li input[type="text"], tr td input[type="text"] {
+    color: #fff;
+}
+
+input::-webkit-input-placeholder {
+    color: #fff;
+} 
 
 /* @end */
 

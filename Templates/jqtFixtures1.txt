@@ -1,0 +1,6 @@
+        <div id=":OUR_TEAM_ABBREV:" class="fixtures">
+            <div class="toolbar">
+                <h1>:OUR_TEAM:</h1>
+                <a href="#" class="back">Teams</a>
+            </div>
+            <ul class="rounded">

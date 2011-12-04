@@ -1,0 +1,7 @@
+        <div id="teams">
+            <div class="toolbar">
+                <h1>Teams</h1>
+                <a class="back" href="#">Club</a>
+            </div>
+            <ul class="rounded">
+

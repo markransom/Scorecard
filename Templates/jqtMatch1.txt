@@ -1,0 +1,32 @@
+	<div id="match">
+            <div class="toolbar">
+                <h1>Match</h1>
+                <a class="back" href="#">back</a>
+                <a class="button slideup" id="SaveMatch" href="#">Save</a>
+            </div>
+
+            <h2>Opposition Team</h2>
+		<ul class="rounded"><li class="oppTeam"></li></ul>
+            <h2>Venue</h2>
+            	<ul class="rounded"><li><input type="text" id="matchVenue" placeholder="Enter match venue" /></li></ul>
+            <h2>Other Details</h2>
+            	<ul class="individual">
+		<li><input type="text" id="matchDate" placeholder="Match Date" /></li>
+            	<li><input type="text"  pattern="[0-9]*" id="matchTime" placeholder="Start Time" /></li></ul>
+            	<ul class="individual">
+		<li><select id="homeaway">
+				<option value ="Home">Home</option>
+				<option value ="Away">Away</option>
+		</select></li>
+		<li><select id="numCourts">
+				<option value ="1">1 Pair</option>
+				<option value ="2">2 Pairs</option>
+				<option value ="3">3 Pairs</option>
+		</select></li></ul>
+
+            	<ul class="individual">
+	            	<li><a href="#" id="match2ourPlayers">Players</a></li>
+	            	<li><a href="#" id="match2scorecard">Scorecard</a></li>
+		</ul>
+	</div>
+

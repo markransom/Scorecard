@@ -1,0 +1,28 @@
+	<div id="ourPlayers">
+		<div class="toolbar">
+			<h1>Our Team</h1>
+			<a class="back" href="#match">Match</a>
+			<a class="button slideup" id="SavePlayers" href="#">Save</a>
+		</div>
+
+		<h2>Pair 1</h2>
+		<ul class="individual">
+			<li><input type="text" id="ourPlayer1" placeholder="Enter player name" /></li>
+			<li><input type="text" id="ourPlayer2" placeholder="Enter player name" /></li>
+		</ul>
+		<h2>Pair 2</h2>
+		<ul class="individual">
+			<li><input type="text" id="ourPlayer3" placeholder="Enter player name" /></li>
+			<li><input type="text" id="ourPlayer4" placeholder="Enter player name" /></li>
+		</ul>
+		<h2>Pair 3</h2>
+		<ul class="individual">
+			<li><input type="text" id="ourPlayer5" placeholder="Enter player name" /></li>
+			<li><input type="text" id="ourPlayer6" placeholder="Enter player name" /></li>
+		</ul>
+
+		<ul class="individual">
+			<li><a href="#" id="ourPlayers2oppPlayers">Opposition</a></li>
+			<li><a href="#" id="ourPlayers2scorecard">Scorecard</a></li>
+		</ul>
+	</div>

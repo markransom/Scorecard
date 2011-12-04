@@ -1,0 +1,1 @@
+                <li class="arrow" id=":OUR_TEAM_ABBREV:-:FIX_SEQ:"><a href="#match">:OPP_TEAM:  <small class=":OUR_TEAM_ABBREV:-:FIX_SEQ:D"></small></a></li>

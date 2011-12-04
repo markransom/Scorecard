@@ -1,0 +1,32 @@
+	<div id="rubber">
+		<div class="toolbar">
+                <h1>Rubber</h1>
+                <a class="back" href="#">Back</a>
+                <a class="button slideup" id="SaveRubber" href="#">Save</a>
+		</div>
+		<h2>Games</h2>
+		<table class="overview">
+            	<tr>
+            		<td><input type="text" pattern="[0-9]*" class="score" id="g1h" placeholder="?" alt="home score for game 1"/></td>
+            		<td>-</td>
+            		<td><input type="text" pattern="[0-9]*" class="score" id="g1a" placeholder="?" alt="away score for game 1"/></td>
+            	</tr>
+            	<tr>
+            		<td><input type="text" pattern="[0-9]*" class="score" id="g2h" placeholder="?" alt="home score for game 2"/></td>
+            		<td>-</td>
+            		<td><input type="text" pattern="[0-9]*" class="score" id="g2a" placeholder="?" alt="away score for game 2"/></td>
+            	</tr>
+            	<tr>
+            		<td><input type="text" pattern="[0-9]*" class="score" id="g3h" placeholder="?" alt="home score for game 3"/></td>
+            		<td>-</td>
+            		<td><input type="text" pattern="[0-9]*" class="score" id="g3a" placeholder="?" alt="away score for game 3"/></td>
+            	</tr>
+		</table>
+		<div class="ourClub"></div>
+		<ul class="rounded">
+			<li><div id="ourPlayerA"></div></li>
+			<li><div id="ourPlayerB"></div></li>
+		</ul>
+ 		<div class="oppPairFull"></div>
+	</div>
+

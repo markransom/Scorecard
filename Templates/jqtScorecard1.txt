@@ -1,0 +1,69 @@
+	<div id="scorecard">
+            <div class="toolbar">
+                <h1>Scorecard</h1>
+                <a class="back" href="#scorecard">Match</a>
+                <a class="button flip" id="ShowPreview" href="#notes">Report</a>
+            </div>
+        <ul class="individual">
+		<li><select id="toggleTeam">
+				<option value ="0">Home</option>
+				<option value ="1">Away</option>
+				<option value ="2">Home - Away</option>
+		</select></li>
+		<li><select id="toggleType">
+				<option value ="0">Sequence</option>
+				<option value ="1">Rubbers</option>
+				<option value ="2">Games</option>
+				<option value ="3">Aces</option>
+		</select></li></ul>
+
+		<table id="ovtable" class="overview">
+            	<tr>
+            		<td class="rubber" id="h1v1">1</td>
+            		<td class="rubber" id="h1v2">8</td>
+            		<td class="rubber" id="h1v3">6</td>
+            		<td class="ovcolumn" id="h1v4">Tap</td>
+            	</tr>
+            	<tr>
+            		<td class="rubber" id="h2v1">4</td>
+            		<td class="rubber" id="h2v2">2</td>
+            		<td class="rubber" id="h2v3">9</td>
+            		<td class="ovcolumn" id="h2v4">cells</td>
+            	</tr>
+            	<tr>
+            		<td class="rubber" id="h3v1">7</td>
+            		<td class="rubber" id="h3v2">5</td>
+            		<td class="rubber" id="h3v3">3</td>
+            		<td class="ovcolumn" id="h3v4">to edit</td>
+            	</tr>
+            	<tr id="ovtotals">
+            		<td class="ovrow" id="h4v1">-</td>
+            		<td class="ovrow" id="h4v2">-</td>
+            		<td class="ovrow" id="h4v3">-</td>
+            		<td class="ovrow" id="h4v4">-</td>
+            	</tr>
+		</table>
+
+		<br />
+
+		<table id="ovsummary" class="summary">
+            	<tr>
+            		<td></td>
+            		<td>Rubbers</td>
+            		<td>Games</td>
+            		<td>Aces</td>
+            	</tr>
+            	<tr>
+            		<td id="homeClub"></td>
+            		<td id="homeRubbers"></td>
+            		<td id="homeGames"></td>
+            		<td id="homeAces"></td>
+            	</tr>
+            	<tr>
+            		<td id="awayClub"></td>
+            		<td id="awayRubbers"></td>
+            		<td id="awayGames"></td>
+            		<td id="awayAces"></td>
+            	</tr>
+		</table>
+	</div>

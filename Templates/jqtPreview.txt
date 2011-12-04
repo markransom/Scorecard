@@ -1,0 +1,19 @@
+	<div id="preview">
+            <div class="toolbar">
+                <h1>Match Report</h1>
+                <a class="back" href="#">back</a>
+                <a class="button slideup" id="SendMail" href="#">Email</a>
+            </div>
+
+		<h2>Email Subject</h2>
+			<ul class="rounded">
+				<li id="NoteTitle">Default Email Subject Goes Here</li>
+			</ul>
+		<h2>Email Body</h2>
+			<ul class="rounded">
+				<li id="FixtureNotes"></li>
+				<li><textarea id="PlayerNotes" placeholder="Player Details"></textarea></li>
+				<li><textarea id="NoteDetails" placeholder="(optional comments)"></textarea></li>
+				<li><textarea id="ResultNotes" placeholder="Result Details"></textarea></li>
+			</ul>
+	</div>

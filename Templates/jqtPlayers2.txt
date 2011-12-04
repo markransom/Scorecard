@@ -1,0 +1,26 @@
+        <div id="oppPlayers">
+            <div class="toolbar">
+                <h1>Opposition</h1>
+                <a class="back" href="#match">Match</a>
+                <a class="button slideup" id="SavePlayers2" href="#">Save</a>
+            </div>
+
+            <h2>Pair 1</h2>
+            	<ul class="individual">
+		<li><input type="text" id="oppPlayer1" placeholder="Enter player name" /></li>
+            	<li><input type="text" id="oppPlayer2" placeholder="Enter player name" /></li></ul>
+            <h2>Pair 2</h2>
+            	<ul class="individual">
+		<li><input type="text" id="oppPlayer3" placeholder="Enter player name" /></li>
+            	<li><input type="text" id="oppPlayer4" placeholder="Enter player name" /></li></ul>
+            <h2>Pair 3</h2>
+            	<ul class="individual">
+		<li><input type="text" id="oppPlayer5" placeholder="Enter player name" /></li>
+            	<li><input type="text" id="oppPlayer6" placeholder="Enter player name" /></li></ul>
+
+		<ul class="individual">
+	            	<li><a href="#" id="oppPlayers2scorecard">Scorecard</a></li>
+	            	<li><a href="#" id="oppPlayers2ourPlayers">Our Team</a></li>
+		</ul>
+	</div>
+

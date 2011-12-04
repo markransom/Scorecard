@@ -1,0 +1,47 @@
+    <body>
+        <div id="about" class="selectable">
+                <p><img src="lib/shuttle.png" /></p>
+                <p><strong>Badminton Scorecard</strong><br /><br />
+                    <strong>Developed by Mark Ransom</strong></p>
+                <p><em>Enter and monitor team<br /> fixtures and results</em></p>
+                <p>
+                    <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#097;&#114;&#107;&#046;&#114;&#097;&#110;&#115;&#111;&#109;&#064;&#121;&#097;&#104;&#111;&#111;&#046;&#099;&#111;&#046;&#117;&#107;" target="_blank"> &#109;&#097;&#114;&#107;&#046;&#114;&#097;&#110;&#115;&#111;&#109;&#064;&#121;&#097;&#104;&#111;&#111;&#046;&#099;&#111;&#046;&#117;&#107;</a>
+                </p>
+                <p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+        </div>
+
+        <div id="home" class="current">
+            <div class="toolbar">
+                <h1>:OUR_CLUB:</h1>
+                <a class="button slideup" id="infoButton" href="#about">About</a>
+            </div>
+
+	    <div id="loader">
+	    	<div class="loader">
+			<img src="lib/loader.gif" alt="Loading cache..." width="31" height="31" />
+			<br />Updating Cache...<br /><br />
+		</div>
+	    </div>
+
+	    
+	    <h2>Scorecards (offline)</h2>
+            <ul class="rounded">
+                <li class="arrow"><a href="#teams">Teams</a></li>
+	    </ul>
+            <h2>NottsBA (online)</h2>
+            <ul class="rounded online-required">
+                <li class="forward"><a href="http://www.nottsba.co.uk/mobile/club_tables.php?cnm=<OURSUMMARY>" target="_webapp">League Results</a></li>
+                <li class="forward"><a href="http://www.nottsba.co.uk/mobile/venues.php" target="_webapp">Venues</a></li>
+                <li class="forward"><a href="http://www.nottsba.co.uk/mobile/clubs.php" target="_webapp">Clubs</a></li>
+                <li class="forward"><a href="http://www.nottsba.co.uk/mobile/stringers.php" target="_webapp">Stringers</a></li>
+                <li class="forward"><a href="http://www.nottsba.co.uk/mobile/coaches.php" target="_webapp">Coaches</a></li>
+            </ul>
+            <ul class="rounded offline-only">
+		<li>Connection not detected</li>
+            </ul>
+
+            <div class="info">
+                <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
+            </div>
+        </div>
+        

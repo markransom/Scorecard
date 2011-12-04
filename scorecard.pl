@@ -11,17 +11,16 @@ sub main {
 
 	getclubs();
 
-# re-instate following lines if csv files need regenerating...
 	print "\n\nCreating club / division cvs lists...";
-	$summaries="/club_divisions_csv";
+	$summaries="/club_divisions";
         loadnew();
         clubloop();
 
 	print "\n\nCreating club iphone web pages...";
-
 	$team_lib=$toplivelib.$summaries;
 	$topdevlib=$here.$team_lib;
-	$summaries="/club_iphone_pages";
+	$summaries="/club_webapps";
+
         csvloop();
 
 	sleep 10;
@@ -261,7 +260,6 @@ sub definitions {
 	use Cwd;
 	$here=getcwd;
 
-    	$scripts=$here."/scripts";
 	$templates=$here."/Templates";
 	$toptemplib=$here."/temp";
 	$toplivelib=$here."/live";
@@ -396,7 +394,7 @@ sub getnewyear {
 
 sub getclubs {
         $searchfile="clubs.txt";
-        open(_searchfile, "$scripts/$searchfile") or print "4.Can't find $searchfile: $!\n";
+        open(_searchfile, "$templates/$searchfile") or print "4.Can't find $searchfile: $!\n";
         @clubs=<_searchfile>;
         close(_searchfile);
 }

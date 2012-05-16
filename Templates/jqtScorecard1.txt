@@ -1,8 +1,8 @@
 	<div id="scorecard">
             <div class="toolbar">
                 <h1>Scorecard</h1>
-                <a class="back" href="#scorecard">Match</a>
-                <a class="button flip" id="ShowPreview" href="#notes">Report</a>
+                <a class="back" href="#match">Match</a>
+                <a class="button flip" id="SendMail" href="#">Email</a>
             </div>
 
 		<table id="ovsummary" class="summary">
@@ -10,7 +10,7 @@
             		<td></td>
             		<td id="rubbertit">Rubbers</td>
             		<td id="gametit">Games</td>
-            		<td id="acetit>Aces</td>
+            		<td id="acetit">Aces</td>
             	</tr>
             	<tr>
             		<td id="homeClub"></td>

@@ -77,8 +77,7 @@ $('body').append('<div id="progress">Loading...</div>');
     $('.rubber').bind('click', gotoRubber);
     $('#rubber').bind('pageAnimationStart', loadRubber);
     $('#SaveRubber').bind('click', saveRubber);
-    $('#ShowPreview').bind('click', FillReport);
-    $('#SendMail').bind('click', SendMail);
+    $('#SendMail').bind('click', FillReport);
     $('#match2scorecard').bind('click', match2scorecard);
     $('#match2ourPlayers').bind('click', match2ourPlayers);
     $('#ourPlayers2scorecard').bind('click', players2scorecard);
@@ -769,8 +768,7 @@ function FillReport() {
 	$("#PlayerNotes").val(playerNotes);
 
 	reportResults();
-
-jQT.goTo($('#preview'), 'flip');
+	window.setTimeout('SendMail()',10);
 }
 
 function SendMail() {
@@ -781,7 +779,7 @@ function SendMail() {
 	body=body+"%0A%0A"+encodeURIComponent($("#ResultNotes").val());
 	var mailtext="mailto:?subject="+subject+"&body="+body;
 	window.open(mailtext,'_self');
-	jQT.goBack('');
+    	jQT.goBack('#match');
 }
 
 function toggleType() {

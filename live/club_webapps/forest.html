@@ -321,18 +321,29 @@
                 <a class="back" href="#scorecard">Match</a>
                 <a class="button flip" id="ShowPreview" href="#notes">Report</a>
             </div>
-        <ul class="individual">
-		<li><select id="toggleTeam">
-				<option value ="0">Home</option>
-				<option value ="1">Away</option>
-				<option value ="2">Home - Away</option>
-		</select></li>
-		<li><select id="toggleType">
-				<option value ="0">Sequence</option>
-				<option value ="1">Rubbers</option>
-				<option value ="2">Games</option>
-				<option value ="3">Aces</option>
-		</select></li></ul>
+
+		<table id="ovsummary" class="summary">
+            	<tr>
+            		<td></td>
+            		<td id="rubbertit">Rubbers</td>
+            		<td id="gametit">Games</td>
+            		<td id="acetit>Aces</td>
+            	</tr>
+            	<tr>
+            		<td id="homeClub"></td>
+            		<td id="homeRubbers"></td>
+            		<td id="homeGames"></td>
+            		<td id="homeAces"></td>
+            	</tr>
+            	<tr>
+            		<td id="awayClub"></td>
+            		<td id="awayRubbers"></td>
+            		<td id="awayGames"></td>
+            		<td id="awayAces"></td>
+            	</tr>
+		</table>        
+		
+		<br />
 
 		<table id="ovtable" class="overview">
             	<tr>
@@ -361,28 +372,6 @@
             	</tr>
 		</table>
 
-		<br />
-
-		<table id="ovsummary" class="summary">
-            	<tr>
-            		<td></td>
-            		<td>Rubbers</td>
-            		<td>Games</td>
-            		<td>Aces</td>
-            	</tr>
-            	<tr>
-            		<td id="homeClub"></td>
-            		<td id="homeRubbers"></td>
-            		<td id="homeGames"></td>
-            		<td id="homeAces"></td>
-            	</tr>
-            	<tr>
-            		<td id="awayClub"></td>
-            		<td id="awayRubbers"></td>
-            		<td id="awayGames"></td>
-            		<td id="awayAces"></td>
-            	</tr>
-		</table>
 	</div>
 	<div id="rubber">
 		<div class="toolbar">

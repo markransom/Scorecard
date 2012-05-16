@@ -90,11 +90,9 @@ $('body').append('<div id="progress">Loading...</div>');
     $('#venues').bind('pageAnimationStart', loadVenues); 
     $('#clubs').bind('pageAnimationStart', loadClubs); 
     $('#venue_details').bind('pageAnimationStart', loadVenueDetails); 
-    $('#club_details').bind('pageAnimationStart', loadClubDetails); 
-
-    $("#toggleType").change(function() {refreshSummary();}); 
-    $("#toggleTeam").change(function() {refreshSummary();}); 
- 
+    $('#club_details').bind('pageAnimationStart', loadClubDetails);  
+    $('.ovcolumn').bind('click', toggleType);
+    $('.ovrow').bind('click', toggleType);
 
     $('.fixtures ul li a').bind('click', function(e, data) {
     	sessionStorage.oppTeam=$(this).text().replace(/\s\s.*/, '');
@@ -786,6 +784,14 @@ function SendMail() {
 	jQT.goBack('');
 }
 
+function toggleType() {
+	if (sessionStorage.viewType <= 1) {
+		sessionStorage.viewType=3;
+	} else {
+		sessionStorage.viewType=sessionStorage.viewType-1;
+	}
+	refreshSummary();	
+}
 
 function refreshSummary() {
 
@@ -797,14 +803,15 @@ function refreshSummary() {
 	var altcolTot = [0,0,0];
 	var playSeq='         ';
 	
-	sessionStorage.viewType=$('#toggleType').val();
-	sessionStorage.viewTeam=$('#toggleTeam').val();
+	if (!sessionStorage.viewType) {sessionStorage.viewType=3};
+
+	sessionStorage.viewTeam=2;
 	
 // viewType options
 // 0 = Sequence of play
-// 1 = Rubber W/L Summary
-// 2 = Total Aces per Home Pair
-// 3 = Total Aces per Away Pair
+// 1 = Rubbers Summary
+// 2 = Games Summary
+// 3 = Aces Details
 
 // viewTeam options
 // 0 = Home
@@ -816,12 +823,9 @@ function refreshSummary() {
 		var awayPair= i%3 + 1;
 		var homePair= (i - i%3) / 3 + 1;
 		var boxID='#h'+homePair+'v'+awayPair;
-		if (sessionStorage.viewType=='0') {
-			$(boxID).text(playSeq.substr(i,1));
-		} else {
-			$(boxID).text('');
-		}
+		$(boxID).text(playSeq.substr(i,1));
 	}
+
 	$('#h1v4').text('Tap');
 	$('#h2v4').text('cells');
 	$('#h3v4').text('to edit');
@@ -855,31 +859,9 @@ function refreshSummary() {
 			  awayVal=(parseInt("0"+row.g1a,10) > parseInt("0"+row.g1h,10)) + 
 			  	(parseInt("0"+row.g2a,10) > parseInt("0"+row.g2h,10)) + 
 			  	(parseInt("0"+row.g3a,10) > parseInt("0"+row.g3h,10));
+
 			  if (homeVal+awayVal>0) {
 			    	$(boxID).text('-');
-				switch(sessionStorage.viewTeam) 
-				{
-				case '0':
-				  	if (homeVal==2) {
-   			  			$(boxID).text('1');
-   			  			homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+1;
-   			  			awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+1;
-				  	}
-				  	if (awayVal==2) {
-   			  			$(boxID).text('0');
-					}
-					break;
-				case '1':
-				  	if (homeVal==2) {
-				   		$(boxID).text('0');
-					}
-				  	if (awayVal==2) {
-				   		$(boxID).text('1');
-	   			  		homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+1;
-	   			  		awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+1;
-					}
-					break;
-				case '2':
 				  	if (homeVal==2) {
 				   		$(boxID).text('1 ~ 0');
 	   			  		homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+1;
@@ -890,8 +872,6 @@ function refreshSummary() {
 	   			  		altrowTot[homePair-1]=parseInt("0"+altrowTot[homePair-1],10)+1;
 	   			  		altcolTot[awayPair-1]=parseInt("0"+altcolTot[awayPair-1],10)+1;
 					}
-					break;
-				}    	
 			  }
 			  break;
 			case '2': // games
@@ -901,75 +881,35 @@ function refreshSummary() {
 			  awayVal=(parseInt("0"+row.g1a,10) > parseInt("0"+row.g1h,10)) + 
 			  	(parseInt("0"+row.g2a,10) > parseInt("0"+row.g2h,10)) + 
 			  	(parseInt("0"+row.g3a,10) > parseInt("0"+row.g3h,10));
-				switch(sessionStorage.viewTeam) 
-				{
-				case '0':
-	 	   		  $(boxID).text(homeVal);			  	
-				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+homeVal;
-				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+homeVal;
-				  break;
-				case '1':
-	 	   		  $(boxID).text(awayVal);			  	
-				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+awayVal;
-				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+awayVal;
-				  break;
-				case '2':
+
 	 	   		  $(boxID).text(homeVal+" ~ "+awayVal);			  	
 				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+homeVal;
 				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+homeVal;
 				  altrowTot[homePair-1]=parseInt("0"+altrowTot[homePair-1],10)+awayVal;
 				  altcolTot[awayPair-1]=parseInt("0"+altcolTot[awayPair-1],10)+awayVal;
-				  break;
-			  }
 			  break;
 			case '3': // aces
 			  homeVal=parseInt("0"+row.g1h,10)+parseInt("0"+row.g2h,10)+parseInt("0"+row.g3h,10);
 			  awayVal=parseInt("0"+row.g1a,10)+parseInt("0"+row.g2a,10)+parseInt("0"+row.g3a,10);
-				switch(sessionStorage.viewTeam) 
-				{
-				case '0':
-	 	   		  $(boxID).text(homeVal);			  	
-				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+homeVal;
-				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+homeVal;
-				  break;
-				case '1':
-	 	   		  $(boxID).text(awayVal);			  	
-				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+awayVal;
-				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+awayVal;
-				  break;
-				case '2':
 	 	   		  $(boxID).text(homeVal+" ~ "+awayVal);			  	
 				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+homeVal;
 				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+homeVal;
 				  altrowTot[homePair-1]=parseInt("0"+altrowTot[homePair-1],10)+awayVal;
 				  altcolTot[awayPair-1]=parseInt("0"+altcolTot[awayPair-1],10)+awayVal;
-				  break;
-			  }
 			  break;
 			}    	
 
                     }
 		    if (sessionStorage.viewType!='0') {
 	                    for (var i=1; i < 4; i++) {
-	                    	if (sessionStorage.viewTeam=='2') {
-	   				var boxID='#h'+i+'v4';
-	 	   			$(boxID).text(homeTot[i-1]+"~"+altrowTot[i-1]);
-	   				var boxID='#h4'+'v'+i;
-		    			$(boxID).text(awayTot[i-1]+"~"+altcolTot[i-1]);
-		                } else {
-	   				var boxID='#h'+i+'v4';
-	 	   			$(boxID).text(homeTot[i-1]);
-	   				var boxID='#h4'+'v'+i;
-		    			$(boxID).text(awayTot[i-1]);
-		                }
+	   			var boxID='#h'+i+'v4';
+	 	   		$(boxID).text(homeTot[i-1]+"~"+altrowTot[i-1]);
+	   			var boxID='#h4'+'v'+i;
+		    		$(boxID).text(awayTot[i-1]+"~"+altcolTot[i-1]);
 	                    }
-	                    if (sessionStorage.viewTeam=='2') {
-	                        homeVal=homeTot[0]+homeTot[1]+homeTot[2];
-	                        awayVal=altrowTot[0]+altrowTot[1]+altrowTot[2];
-		    	    	$('#h4v4').text(homeVal+"~"+awayVal);
-			    } else {
-		    	    	$('#h4v4').text(homeTot[0]+homeTot[1]+homeTot[2]);
-			    }
+	                    homeVal=homeTot[0]+homeTot[1]+homeTot[2];
+	                    awayVal=altrowTot[0]+altrowTot[1]+altrowTot[2];
+		    	    $('#h4v4').text(homeVal+"~"+awayVal);
 		    }
 
                 }, 

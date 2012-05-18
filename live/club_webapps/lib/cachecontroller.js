@@ -28,6 +28,7 @@ function logEvent(e) {
     message+= ', event: ' + type;
     message+= ', status: ' + status;
     loader = document.getElementById("loader").style;
+    loaded = document.getElementById("loaded").style;
 
     if (status == 'downloading' && navigator.onLine) {
 	loader.display = "table";
@@ -48,7 +49,8 @@ window.applicationCache.addEventListener(
     function(){
         window.applicationCache.swapCache();
         console.log('swap cache has been called');
-        location.reload();
+	var r=confirm("Application updated");
+	if (r==true) {location.reload();}
     }, 
     false
 );

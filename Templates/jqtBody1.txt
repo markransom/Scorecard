@@ -22,7 +22,6 @@
 			<br />Updating Cache...<br /><br />
 		</div>
 	    </div>
-
 	    
 	    <h2>Scorecards (offline)</h2>
             <ul class="rounded">

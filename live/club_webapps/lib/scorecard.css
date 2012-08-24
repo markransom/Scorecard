@@ -126,6 +126,7 @@ ul li, ul li input[type="text"], tr td input[type="text"] {
     color: #fff;
 }
 
+
 input::-webkit-input-placeholder {
     color: #fff;
 } 

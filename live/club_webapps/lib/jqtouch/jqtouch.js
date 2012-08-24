@@ -520,8 +520,8 @@
             if (event)
             {
                 var hoverTimeout = null,
-                    startX = event.changedTouches[0].clientX,
-                    startY = event.changedTouches[0].clientY,
+                    startX = event.changedTouches[0].pageX,
+                    startY = event.changedTouches[0].pageY,
                     startTime = (new Date).getTime(),
                     deltaX = 0,
                     deltaY = 0,

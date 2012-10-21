@@ -5,7 +5,7 @@ main();
 sub main {
 
 	$main="MAIN";
-	$newseason="2011-2012";
+	$newseason="2012-2013";
 
 	definitions();
 

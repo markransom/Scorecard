@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 function loadPage(url) {
 
-sessionStorage.season="2011-2012";
+sessionStorage.season="2012-2013";
 $('body').append('<div id="progress">Loading...</div>');
     
 // Page animation callback events
@@ -92,9 +92,10 @@ $('body').append('<div id="progress">Loading...</div>');
     $('#club_details').bind('pageAnimationStart', loadClubDetails);  
     $('.ovcolumn').bind('click', toggleType);
     $('.ovrow').bind('click', toggleType);
+    $('#teams').bind('pageAnimationStart', initClub);  
 
     $('.fixtures ul li a').bind('click', function(e, data) {
-    	sessionStorage.oppTeam=$(this).text().replace(/\s\s.*/, '');
+    	sessionStorage.oppTeam=$(this).html().replace(/\s\s.*/, '');
     	sessionStorage.matchID=this.parentNode.id;
 	
 	oppClub=sessionStorage.oppTeam.replace(/[0-9\s]/g, '');
@@ -156,7 +157,9 @@ $('#progress').remove();
 
 }
 
-
+function initClub() {
+    	sessionStorage.ourClub=$('#ourClubName').html();
+}
 
 function loadClubs() {
   $.getJSON("jsonclubs.php",
@@ -177,7 +180,7 @@ function loadClubDetails() {
 
   var jsonID=$(this).data('referrer').parent().attr('id');
 
-  $.getJSON("http://www.nottsba.co.uk/scorecard-wip/jsonclubs.php"+"&callback=?", 
+  $.getJSON("http://www.nottsba.co.uk/scorecard/jsonclubs.php"+"&callback=?", 
         function(data) {
         alert(data.length);
         	if (data.length >= jsonID.substr(5)) {
@@ -579,7 +582,7 @@ function loadFixtures() {
     $('.numCourts').text('');
     $('.homeaway').text('');
 
-	//added to swap 'X' value used when a club has 2 teams in same division
+    //added to swap 'X' value used when a club has 2 teams in same division
     ourTeamNo=sessionStorage.ourTeam.replace(/[^0-9]/g, '');
     sessionStorage.ourTeamLong=sessionStorage.ourClub+" "+ourTeamNo;
 
@@ -734,7 +737,6 @@ function gotoRubber() {
 
 
 function loadClub() {
-    	sessionStorage.ourClub=$('.toolbar h1', this).text();
     	$('#ourClub').val(sessionStorage.ourClub);
     	$('.ourClub').text(sessionStorage.ourClub);
 }
@@ -788,6 +790,24 @@ function toggleType() {
 	} else {
 		sessionStorage.viewType=sessionStorage.viewType-1;
 	}
+	switch(sessionStorage.viewType)
+	{
+		case '1': // rubbers
+		$('#rubbertit').html('<b>RUBBERS</b>');
+		$('#gametit').html('Games');
+		$('#acetit').html('Aces');
+		break;
+		case '2': // games
+		$('#rubbertit').html('Rubbers');
+		$('#gametit').html('<b>GAMES</b>');
+		$('#acetit').html('Aces');
+		break;
+		case '3': // aces
+		$('#rubbertit').html('Rubbers');
+		$('#gametit').html('Games');
+		$('#acetit').html('<b>ACES</b>');
+		break;
+	}	
 	refreshSummary();	
 }
 
@@ -824,12 +844,12 @@ function refreshSummary() {
 		$(boxID).text(playSeq.substr(i,1));
 	}
 
-	$('#h1v4').text('Tap');
-	$('#h2v4').text('cells');
-	$('#h3v4').text('to edit');
-	$('#h4v1').text('-');
-	$('#h4v2').text('-');
-	$('#h4v3').text('-');
+	$('#h1v4').html('Tap<br/>white');
+	$('#h2v4').html('cells<br/>to');
+	$('#h3v4').html('edit<br/>scores');
+	$('#h4v1').html('Tap<br/><br/>to');
+	$('#h4v2').html('other<br/><br/>toggle');
+	$('#h4v3').html('cells<br/><br/>view');
 	$('#h4v4').text('-');
 
   jQuery('#ovtotals').hide();
@@ -847,6 +867,7 @@ function refreshSummary() {
 			var homePair=row.rubberID.substr(1,1);
 			var awayPair=row.rubberID.substr(3,1);
    			var boxID='#h'+homePair+'v'+awayPair;
+			var innerString="";
 
 			switch(sessionStorage.viewType)
 			{
@@ -880,34 +901,53 @@ function refreshSummary() {
 			  	(parseInt("0"+row.g2a,10) > parseInt("0"+row.g2h,10)) + 
 			  	(parseInt("0"+row.g3a,10) > parseInt("0"+row.g3h,10));
 
-	 	   		  $(boxID).text(homeVal+" ~ "+awayVal);			  	
-				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+homeVal;
-				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+homeVal;
-				  altrowTot[homePair-1]=parseInt("0"+altrowTot[homePair-1],10)+awayVal;
-				  altcolTot[awayPair-1]=parseInt("0"+altcolTot[awayPair-1],10)+awayVal;
+	 	   	  $(boxID).text(homeVal+" ~ "+awayVal);			  	
+			  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+homeVal;
+			  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+homeVal;
+			  altrowTot[homePair-1]=parseInt("0"+altrowTot[homePair-1],10)+awayVal;
+			  altcolTot[awayPair-1]=parseInt("0"+altcolTot[awayPair-1],10)+awayVal;
 			  break;
-			case '3': // aces
-			  homeVal=parseInt("0"+row.g1h,10)+parseInt("0"+row.g2h,10)+parseInt("0"+row.g3h,10);
-			  awayVal=parseInt("0"+row.g1a,10)+parseInt("0"+row.g2a,10)+parseInt("0"+row.g3a,10);
-	 	   		  $(boxID).text(homeVal+" ~ "+awayVal);			  	
+			case '3': // aces			  
+			  if (row.g1h + row.g1a + row.g2h + row.g2a + row.g3h + row.g3a > 0) {
+				  homeVal=parseInt("0"+row.g1h,10)+parseInt("0"+row.g2h,10)+parseInt("0"+row.g3h,10);
+				  awayVal=parseInt("0"+row.g1a,10)+parseInt("0"+row.g2a,10)+parseInt("0"+row.g3a,10);
+		 	   	  $(boxID).text(homeVal+" ~ "+awayVal);			  	
 				  homeTot[homePair-1]=parseInt("0"+homeTot[homePair-1],10)+homeVal;
 				  awayTot[awayPair-1]=parseInt("0"+awayTot[awayPair-1],10)+homeVal;
 				  altrowTot[homePair-1]=parseInt("0"+altrowTot[homePair-1],10)+awayVal;
 				  altcolTot[awayPair-1]=parseInt("0"+altcolTot[awayPair-1],10)+awayVal;
+
+				  innerString="<table class='innerblock'>";
+			  }
+			  if (row.g1h + row.g1a > 0) {
+				  innerString=innerString+"<tr><td>"+parseInt("0"+row.g1h,10)+"-"+parseInt("0"+row.g1a,10)+"</td></tr>";
+			  }
+			  if (row.g2h + row.g2a > 0) {
+				  innerString=innerString+"<tr><td>"+parseInt("0"+row.g2h,10)+"-"+parseInt("0"+row.g2a,10)+"</td></tr>";
+			  }
+			  if (row.g3h + row.g3a > 0) {
+				  innerString=innerString+"<tr><td>"+parseInt("0"+row.g3h,10)+"-"+parseInt("0"+row.g3a,10)+"</td></tr>";
+			  }
+			  if (row.g1h + row.g1a + row.g2h + row.g2a + row.g3h + row.g3a > 0) {
+			    	  innerString=innerString+"</table>";
+		 	   	  $(boxID).html(innerString);			  			    	
+			  }
 			  break;
 			}    	
 
                     }
 		    if (sessionStorage.viewType!='0') {
-	                    for (var i=1; i < 4; i++) {
-	   			var boxID='#h'+i+'v4';
-	 	   		$(boxID).text(homeTot[i-1]+"~"+altrowTot[i-1]);
-	   			var boxID='#h4'+'v'+i;
-		    		$(boxID).text(awayTot[i-1]+"~"+altcolTot[i-1]);
-	                    }
-	                    homeVal=homeTot[0]+homeTot[1]+homeTot[2];
-	                    awayVal=altrowTot[0]+altrowTot[1]+altrowTot[2];
-		    	    $('#h4v4').text(homeVal+"~"+awayVal);
+			    if (homeVal+awayVal>0) {
+	                    	for (var i=1; i < 4; i++) {
+		   			var boxID='#h'+i+'v4';
+		 		   	$(boxID).text(homeTot[i-1]+"~"+altrowTot[i-1]);
+					var boxID='#h4'+'v'+i;
+				    	$(boxID).text(awayTot[i-1]+"~"+altcolTot[i-1]);
+	                    	}
+	                    	homeVal=homeTot[0]+homeTot[1]+homeTot[2];
+	                    	awayVal=altrowTot[0]+altrowTot[1]+altrowTot[2];
+				$('#h4v4').text(homeVal+"~"+awayVal);
+			    }
 		    }
 
                 }, 

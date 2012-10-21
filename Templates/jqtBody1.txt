@@ -16,7 +16,7 @@
                 <a class="button slideup" id="infoButton" href="#about">About</a>
             </div>
 
-            <h1>:OUR_CLUB:</h1>
+            <h1 id="ourClubName">:OUR_CLUB:</h1>
 	    <div id="loader">
 	    	<div class="loader">
 			<img src="lib/loader.gif" alt="Loading cache..." width="31" height="31" />

@@ -10,7 +10,7 @@
             		<td></td>
             		<td id="rubbertit">Rubbers</td>
             		<td id="gametit">Games</td>
-            		<td id="acetit">Aces</td>
+            		<td id="acetit">ACES</td>
             	</tr>
             	<tr>
             		<td id="homeClub"></td>

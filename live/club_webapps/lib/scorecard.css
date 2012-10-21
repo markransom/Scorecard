@@ -6,7 +6,6 @@ table.overview {
 	border-color: gray;
 	border-collapse: separate;
 	background-color: #5A5D63;
-
 }
 table.overview th {
 	border-width: 2px;
@@ -14,20 +13,46 @@ table.overview th {
 	border-style: none;
 	border-color: #5A5D63;
 	background-color: #5A5D63;
-
 }
 table.overview tr {
         text-align: center;     
-	height: 55px;
+	height: 70px;
 }
 table.overview td {
 	border-width: 2px;
 	min-width: 50px;
-	padding: 5px;
+	padding: 0px;
 	border-style: solid;
 	border-color: #5A5D63;
 	background-color: #000000;
-
+}
+table.innerblock {
+	margin: 0 auto; 
+	border-width: 0px;
+	border-spacing: ;
+	border-style: none;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: #000000;
+}
+table.innerblock th {
+	border-width: 0px;
+	padding: 0px;
+	border-style: none;
+	border-color: #000000;
+	background-color: #000000;
+}
+table.innerblock tr {
+        text-align: center;     
+	height: 5px;
+}
+table.innerblock td {
+	border-width: 0px;
+	min-width: 10px;
+	padding: 0px;
+	border-style: none;
+	border-color: #000000;
+	background-color: #000000;
 }
 table.summary {
 	margin: 0 auto; 
@@ -59,12 +84,12 @@ table.summary td {
 #ovtable .ovcolumn {
 	border-color: #5A5D63;
 	background-color: #000;
-	color: #0f0;
+	color: #f00;
 }
 #ovtotals .ovrow {
 	border-color: #5A5D63;
 	background-color: #000;
-	color: #f00;
+	color: #0f0;
 }
 input[class="score"] {
 	color:#fff;

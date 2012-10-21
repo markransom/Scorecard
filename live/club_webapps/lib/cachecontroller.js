@@ -28,8 +28,7 @@ function logEvent(e) {
     message+= ', event: ' + type;
     message+= ', status: ' + status;
     loader = document.getElementById("loader").style;
-    loaded = document.getElementById("loaded").style;
-
+    
     if (status == 'downloading' && navigator.onLine) {
 	loader.display = "table";
     }

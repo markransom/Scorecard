@@ -94,6 +94,13 @@ $('body').append('<div id="progress">Loading...</div>');
     $('.ovrow').bind('click', toggleType);
     $('#teams').bind('pageAnimationStart', initClub);  
 
+    $('#teams ul li a').bind('click', function(e, data) {
+    	var wkdiv=$(this).html(); 
+	wkdiv=wkdiv.replace(/.*<small>/g,"");
+	wkdiv=wkdiv.replace(/<\/small>.*/g,""); 
+    	sessionStorage.division=wkdiv;
+    });
+	
     $('.fixtures ul li a').bind('click', function(e, data) {
     	sessionStorage.oppTeam=$(this).html().replace(/\s\s.*/, '');
     	sessionStorage.matchID=this.parentNode.id;
@@ -742,31 +749,58 @@ function loadClub() {
 }
 
 function FillReport() {
-	$("#NoteTitle").text(sessionStorage.ourTeam+" vs "+sessionStorage.oppTeam+" match report");
+	var playerNotes="";
+	var fixtureNotes="";
+	var allplayers="";
+	
+	$("#NoteTitle").text(sessionStorage.ourClub+" "+sessionStorage.ourTeam+" vs "+sessionStorage.oppTeam+" match report");
 
-	fixtureNotes="Our "+sessionStorage.ourTeam+" team played "+sessionStorage.oppTeam+" "+$("#homeaway").val()+" at "+$('#matchVenue').val()+" on "+$('#matchDate').val();
-	$("#FixtureNotes").text(fixtureNotes);
+	homeoraway=$("#homeaway").val();
+	matchvenue=$('#matchVenue').val();
+	matchdate=$('#matchDate').val();
+	
+	fixtureNotes="Our "+sessionStorage.ourTeam+" team played "+sessionStorage.oppTeam;
+	if (homeoraway) {
+		fixtureNotes=homeoraway+" Match: "+fixtureNotes;
+	}
+	if (matchvenue) {
+		fixtureNotes=fixtureNotes+" at "+matchvenue;
+	}
+	if (matchdate) {
+		fixtureNotes=fixtureNotes+" on "+matchdate;
+	}
 
-	playerNotes="The Team:\n\nPair1: "+$('#ourPlayer1').val()+" - "+$('#ourPlayer2').val();
-	playerNotes=playerNotes+"\nPair2: "+$('#ourPlayer3').val()+" - "+$('#ourPlayer4').val();
-	playerNotes=playerNotes+"\nPair3: "+$('#ourPlayer5').val()+" - "+$('#ourPlayer6').val();
-//	$("#PlayerNotes").val(playerNotes);
+	allplayers=$('#ourPlayer1').val()+$('#ourPlayer2').val()+$('#ourPlayer3').val()+$('#ourPlayer4').val()+$('#ourPlayer5').val()+$('#ourPlayer6').val();
+	if (allplayers) {
+		playerNotes=sessionStorage.ourClub+" players:\n\nPair1: "+$('#ourPlayer1').val()+" - "+$('#ourPlayer2').val();
+		playerNotes=playerNotes+"\nPair2: "+$('#ourPlayer3').val()+" - "+$('#ourPlayer4').val();
+		playerNotes=playerNotes+"\nPair3: "+$('#ourPlayer5').val()+" - "+$('#ourPlayer6').val();
+		//	$("#PlayerNotes").val(playerNotes);
+	}
+
+	allplayers=$('#oppPlayer1').val()+$('#oppPlayer2').val()+$('#oppPlayer3').val()+$('#oppPlayer4').val()+$('#oppPlayer5').val()+$('#oppPlayer6').val();
+	if (allplayers) {
+		playerNotes=playerNotes+"\n\n"+sessionStorage.oppTeam+" players:\n\nv1: "+$('#oppPlayer1').val()+" - "+$('#oppPlayer2').val();
+		playerNotes=playerNotes+"\nv2: "+$('#oppPlayer3').val()+" - "+$('#oppPlayer4').val();
+		playerNotes=playerNotes+"\nv3: "+$('#oppPlayer5').val()+" - "+$('#oppPlayer6').val();
+	}
+
 	$("#NoteDetails").val("Comments:\n\n");
 
 	homescore=parseInt("0"+$('#homeRubbers').text(),10);
 	awayscore=parseInt("0"+$('#awayRubbers').text(),10);
 	if (homescore+awayscore==9) {
-		homeoraway=$("#homeaway").val();
 		if ((homescore>awayscore) && (homeoraway=="Home")||(homescore<awayscore) && (homeoraway=="Away")) {
-			overall="\n\nFinal score Beeston Valley won ";
+			overall="\n\nFinal score "+sessionStorage.ourClub+" won ";
 		} else {
-			overall="\n\nFinal score Beeston Valley lost ";
+			overall="\n\nFinal score "+sessionStorage.ourClub+" lost ";
 		}
 	} else {
 		overall="\n\nIncomplete result ";
 	}
 	
-	playerNotes=playerNotes+overall+$('#homeRubbers').text()+" - "+$('#awayRubbers').text();
+	fixtureNotes=fixtureNotes+overall+$('#homeRubbers').text()+" - "+$('#awayRubbers').text();
+	$("#FixtureNotes").text(fixtureNotes);
 	$("#PlayerNotes").val(playerNotes);
 
 	reportResults();
@@ -777,8 +811,8 @@ function SendMail() {
 	var subject=encodeURIComponent($("#NoteTitle").text());
 	var body=encodeURIComponent($("#FixtureNotes").text());
 	body=body+"%0A%0A"+encodeURIComponent($("#PlayerNotes").val());
-	body=body+"%0A%0A"+encodeURIComponent($("#NoteDetails").val());
 	body=body+"%0A%0A"+encodeURIComponent($("#ResultNotes").val());
+	body=body+"%0A%0A"+encodeURIComponent($("#NoteDetails").val());
 	var mailtext="mailto:?subject="+subject+"&body="+body;
 	window.open(mailtext,'_self');
     	jQT.goBack('#match');

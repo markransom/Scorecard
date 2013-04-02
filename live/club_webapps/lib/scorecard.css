@@ -1,3 +1,24 @@
+input[class="score"] {
+	margin: 0 auto; 
+	padding:0;
+	display:inline-block;
+	width: 20px;
+}
+
+
+tr td input[type="text"] {
+	border:0;	
+        text-align: center;     
+	font:normal 17px Helvetica;
+	background-color: #000;
+	color: #fff;
+} 
+
+ul li, ul li input[type="text"], input::-webkit-input-placeholder {
+	color: #fff;
+}
+
+
 table.overview {
 	margin: 0 auto; 
 	border-width: 2px;
@@ -91,17 +112,8 @@ table.summary td {
 	background-color: #000;
 	color: #0f0;
 }
-input[class="score"] {
-	color:#fff;
-	background-color: #000;
-	border:0;
-        text-align: center;     
-	margin: 0 auto; 
-	font:normal 17px Helvetica;
-	padding:0;
-	display:inline-block;
-	width: 20px;
-}
+
+
 ul li small {
     width: 35%;
 }
@@ -147,14 +159,6 @@ ul li.email {
 }
 
 
-ul li, ul li input[type="text"], tr td input[type="text"] {
-    color: #fff;
-}
-
-
-input::-webkit-input-placeholder {
-    color: #fff;
-} 
 
 /* @end */
 

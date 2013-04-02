@@ -8,6 +8,7 @@ var db;
 var jQT = new $.jQTouch({
                 icon: 'lib/apple-touch-icon.png',
                 addGlossToIcon: true,
+                useFastTouch: false,
                 statusBar: 'black',
                 preloadImages: [
 	            'lib/apple-touch-icon.png',
@@ -66,16 +67,22 @@ $('body').append('<div id="progress">Loading...</div>');
 // page onload & click functions
 
     $('#home').bind('pageAnimationStart', loadClub);
-    $('.fixtures').bind('pageAnimationStart', loadFixtures);
     $('#match').bind('pageAnimationStart', loadMatch);
-    $('#SaveMatch').bind('click', saveMatch);
     $('#ourPlayers').bind('pageAnimationStart', loadPlayers);
-    $('#SavePlayers').bind('click', savePlayers);
-    $('#SavePlayers2').bind('click', savePlayers);
     $('#oppPlayers').bind('pageAnimationStart', loadPlayers);
     $('#scorecard').bind('pageAnimationStart', rubberSummary);
-    $('.rubber').bind('click', gotoRubber);
     $('#rubber').bind('pageAnimationStart', loadRubber);
+    $('.fixtures').bind('pageAnimationStart', loadFixtures);
+
+    $('#venues').bind('pageAnimationStart', loadVenues); 
+    $('#clubs').bind('pageAnimationStart', loadClubs); 
+    $('#venue_details').bind('pageAnimationStart', loadVenueDetails); 
+    $('#club_details').bind('pageAnimationStart', loadClubDetails);  
+    $('#teams').bind('pageAnimationStart', initClub);  
+
+    $('#SaveMatch').bind('click', saveMatch);
+    $('#SavePlayers').bind('click', savePlayers);
+    $('#SavePlayers2').bind('click', savePlayers);
     $('#SaveRubber').bind('click', saveRubber);
     $('#SendMail').bind('click', FillReport);
     $('#match2scorecard').bind('click', match2scorecard);
@@ -86,13 +93,10 @@ $('body').append('<div id="progress">Loading...</div>');
     $('#oppPlayers2ourPlayers').bind('click', oppPlayers2ourPlayers);
     $('#scorecard2oppPlayers').bind('click', scorecard2oppPlayers);
     $('#scorecard2ourPlayers').bind('click', scorecard2ourPlayers);
-    $('#venues').bind('pageAnimationStart', loadVenues); 
-    $('#clubs').bind('pageAnimationStart', loadClubs); 
-    $('#venue_details').bind('pageAnimationStart', loadVenueDetails); 
-    $('#club_details').bind('pageAnimationStart', loadClubDetails);  
+    $('.rubber').bind('click', gotoRubber);
     $('.ovcolumn').bind('click', toggleType);
     $('.ovrow').bind('click', toggleType);
-    $('#teams').bind('pageAnimationStart', initClub);  
+
 
     $('#teams ul li a').bind('click', function(e, data) {
     	var wkdiv=$(this).html(); 
@@ -813,7 +817,8 @@ function SendMail() {
 	body=body+"%0A%0A"+encodeURIComponent($("#PlayerNotes").val());
 	body=body+"%0A%0A"+encodeURIComponent($("#ResultNotes").val());
 	body=body+"%0A%0A"+encodeURIComponent($("#NoteDetails").val());
-	var mailtext="mailto:?subject="+subject+"&body="+body;
+	email_address="nottsba-senior-league-results@googlegroups.com";
+	var mailtext="mailto:"+email_address+"?subject="+subject+"&body="+body;
 	window.open(mailtext,'_self');
     	jQT.goBack('#match');
 }

@@ -43,8 +43,9 @@
     </head>
     <body>
         <div id="about" class="selectable">
-                <p><img src="lib/shuttle.png" /></p>
-                <p><strong>Badminton Scorecard</strong><br /><br />
+                <img src="lib/shuttle.png" />
+                <p><strong>Badminton Scorecard</strong><br />
+		    Last changed Tue Apr  2, 2013<br />
                     <strong>Developed by Mark Ransom</strong></p>
                 <p><em>Enter and monitor team<br /> fixtures and results</em></p>
                 <p>
@@ -267,19 +268,19 @@
 		<h2>Games</h2>
 		<table class="overview">
             	<tr>
-            		<td><input type="text" class="score" id="g1h" placeholder="?" alt="home score for game 1"/></td>
+            		<td><input type="text" class="score" size="3" pattern="[0-9]*" maxlength="2" id="g1h" placeholder="?" alt="home score for game 1"/></td>
             		<td>-</td>
-            		<td><input type="text" class="score" id="g1a" placeholder="?" alt="away score for game 1"/></td>
+            		<td><input type="text" class="score" size="3" pattern="[0-9]*" maxlength="2" id="g1a" placeholder="?" alt="away score for game 1"/></td>
             	</tr>
             	<tr>
-            		<td><input type="text" class="score" id="g2h" placeholder="?" alt="home score for game 2"/></td>
+            		<td><input type="text" class="score" size="3" pattern="[0-9]*" maxlength="2" id="g2h" placeholder="?" alt="home score for game 2"/></td>
             		<td>-</td>
-            		<td><input type="text" class="score" id="g2a" placeholder="?" alt="away score for game 2"/></td>
+            		<td><input type="text" class="score" size="3" pattern="[0-9]*" maxlength="2" id="g2a" placeholder="?" alt="away score for game 2"/></td>
             	</tr>
             	<tr>
-            		<td><input type="text" class="score" id="g3h" placeholder="?" alt="home score for game 3"/></td>
+            		<td><input type="text" class="score" size="3" pattern="[0-9]*" maxlength="2" id="g3h" placeholder="?" alt="home score for game 3"/></td>
             		<td>-</td>
-            		<td><input type="text" class="score" id="g3a" placeholder="?" alt="away score for game 3"/></td>
+            		<td><input type="text" class="score" size="3" pattern="[0-9]*" maxlength="2" id="g3a" placeholder="?" alt="away score for game 3"/></td>
             	</tr>
 		</table>
 		<div class="ourClub"></div>

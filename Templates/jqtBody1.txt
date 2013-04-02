@@ -1,13 +1,14 @@
     <body>
         <div id="about" class="selectable">
-                <p><img src="lib/shuttle.png" /></p>
-                <p><strong>Badminton Scorecard</strong><br /><br />
+                <img src="lib/shuttle.png" />
+                <p><strong>Badminton Scorecard</strong><br />
+		    Last changed :DATE:<br /><br />
                     <strong>Developed by Mark Ransom</strong></p>
                 <p><em>Enter and monitor team<br /> fixtures and results</em></p>
                 <p>
                     <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#097;&#114;&#107;&#046;&#114;&#097;&#110;&#115;&#111;&#109;&#064;&#121;&#097;&#104;&#111;&#111;&#046;&#099;&#111;&#046;&#117;&#107;" target="_blank"> &#109;&#097;&#114;&#107;&#046;&#114;&#097;&#110;&#115;&#111;&#109;&#064;&#121;&#097;&#104;&#111;&#111;&#046;&#099;&#111;&#046;&#117;&#107;</a>
                 </p>
-                <p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+                <p><br /><a href="#" class="grayButton goback">Close</a></p>
         </div>
 
         <div id="home" class="current">

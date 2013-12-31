@@ -259,10 +259,15 @@ sub definitions {
 
 	use Cwd;
 	$here=getcwd;
+	
+	print " - current working directory: ";
+	print $here;
 
 	$templates=$here."/Templates";
 	$toptemplib=$here."/temp";
+	mkdir $toptemplib;
 	$toplivelib=$here."/live";
+	mkdir $toplivelib;
 	$topdevlib="C:/NottsBA";
 
         $clubhead="../clubs/nba_";

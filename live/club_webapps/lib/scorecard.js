@@ -8,7 +8,7 @@ var db;
 var jQT = new $.jQTouch({
                 icon: 'lib/apple-touch-icon.png',
                 addGlossToIcon: true,
-                useFastTouch: false,
+                useFastTouch: true,
                 statusBar: 'black',
                 preloadImages: [
 	            'lib/apple-touch-icon.png',

@@ -20,3 +20,19 @@
         <script src="lib/cachecontroller.js" type="application/x-javascript" charset="utf-8"></script>
         <script src="lib/scorecard.js" type="application/x-javascript" charset="utf-8"></script>
 
+	<link rel="stylesheet" href="src/add2home.css">
+	<script type="text/javascript" src="src/add2home.js" charset="utf-8"></script>
+
+	<script type="text/javascript">
+	var myScroll;
+	function loaded() {
+		setTimeout(function () {
+			myScroll = new iScroll('wrapper');
+		}, 100);
+	}
+	//window.addEventListener('load', loaded, false);
+
+	/* Use this for high compatibility (iDevice + Android)*/
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('DOMContentLoaded', setTimeout(function () { loaded(); }, 200), false);
+	</script>

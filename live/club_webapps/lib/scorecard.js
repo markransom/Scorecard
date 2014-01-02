@@ -53,11 +53,11 @@ $('body').append('<div id="progress">Loading...</div>');
       
       
 // If online, show all online-only resources
-  jQuery('.online-required').hide();
-  jQuery('.offline-only').show();
+  $('.online-required').hide();
+  $('.offline-only').show();
   if (window.navigator.onLine) {
-    jQuery('.online-required').show();
-    jQuery('.offline-only').hide();
+    $('.online-required').show();
+    $('.offline-only').hide();
   }
 
 // var userAgent = navigator.userAgent.toLowerCase();

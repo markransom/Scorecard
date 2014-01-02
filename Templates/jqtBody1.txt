@@ -1,4 +1,5 @@
     <body>
+    <div id="page">
     <div id="jqt">
         <div id="about" class="selectable">
                 <img src="lib/shuttle.png" />

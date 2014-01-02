@@ -20,13 +20,13 @@
             </div>
 
             <h1 id="ourClubName">:OUR_CLUB:</h1>
+	    <div id="wrapper">
 	    <div id="loader">
 	    	<div class="loader">
 			<img src="lib/loader.gif" alt="Loading cache..." width="31" height="31" />
 			<br />Updating Cache...<br /><br />
 		</div>
 	    </div>
-	    
             <ul class="rounded">
                 <li class="arrow"><a href="#teams">Teams</a></li>
 	    </ul>
@@ -41,9 +41,9 @@
             <ul class="rounded offline-only">
 		<li>Connection not detected</li>
             </ul>
-
             <div class="info">
                 <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
             </div>
+	    </div>
         </div>
         

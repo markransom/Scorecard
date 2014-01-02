@@ -20,6 +20,22 @@
         <script src="lib/cachecontroller.js" type="application/x-javascript" charset="utf-8"></script>
         <script src="lib/scorecard.js" type="application/x-javascript" charset="utf-8"></script>
 
+	<link rel="stylesheet" href="src/add2home.css">
+	<script type="text/javascript" src="src/add2home.js" charset="utf-8"></script>
+
+	<script type="text/javascript">
+	var myScroll;
+	function loaded() {
+		setTimeout(function () {
+			myScroll = new iScroll('wrapper');
+		}, 100);
+	}
+	//window.addEventListener('load', loaded, false);
+
+	/* Use this for high compatibility (iDevice + Android)*/
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('DOMContentLoaded', setTimeout(function () { loaded(); }, 200), false);
+	</script>
 
 
        <style type="text/css" media="screen">
@@ -65,13 +81,13 @@
             </div>
 
             <h1 id="ourClubName">Mapperley Park</h1>
+	    <div id="wrapper">
 	    <div id="loader">
 	    	<div class="loader">
 			<img src="lib/loader.gif" alt="Loading cache..." width="31" height="31" />
 			<br />Updating Cache...<br /><br />
 		</div>
 	    </div>
-	    
             <ul class="rounded">
                 <li class="arrow"><a href="#teams">Teams</a></li>
 	    </ul>
@@ -86,10 +102,10 @@
             <ul class="rounded offline-only">
 		<li>Connection not detected</li>
             </ul>
-
             <div class="info">
                 <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
             </div>
+	    </div>
         </div>
         
         <div id="teams">

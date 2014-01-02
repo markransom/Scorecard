@@ -20,6 +20,22 @@
         <script src="lib/cachecontroller.js" type="application/x-javascript" charset="utf-8"></script>
         <script src="lib/scorecard.js" type="application/x-javascript" charset="utf-8"></script>
 
+	<link rel="stylesheet" href="src/add2home.css">
+	<script type="text/javascript" src="src/add2home.js" charset="utf-8"></script>
+
+	<script type="text/javascript">
+	var myScroll;
+	function loaded() {
+		setTimeout(function () {
+			myScroll = new iScroll('wrapper');
+		}, 100);
+	}
+	//window.addEventListener('load', loaded, false);
+
+	/* Use this for high compatibility (iDevice + Android)*/
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('DOMContentLoaded', setTimeout(function () { loaded(); }, 200), false);
+	</script>
 
 
        <style type="text/css" media="screen">
@@ -44,6 +60,7 @@
         </style>
     </head>
     <body>
+    <div id="page">
     <div id="jqt">
         <div id="about" class="selectable">
                 <img src="lib/shuttle.png" />
@@ -75,6 +92,7 @@
                 <li class="arrow"><a href="#teams">Teams</a></li>
 	    </ul>
             <h2>NottsBA</h2>
+	    <div id="wrapper">
             <ul class="rounded online-required">
                 <li class="forward"><a href="http://www.nottsba.co.uk/mobile/club_tables.php?cnm=woodborough" target="_webapp">League Results</a></li>
                 <li class="forward"><a href="http://www.nottsba.co.uk/mobile/venues.php" target="_webapp">Venues</a></li>
@@ -85,10 +103,10 @@
             <ul class="rounded offline-only">
 		<li>Connection not detected</li>
             </ul>
-
             <div class="info">
                 <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
             </div>
+	    </div>
         </div>
         
         <div id="teams">

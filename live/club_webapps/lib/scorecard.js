@@ -97,6 +97,7 @@ $('body').append('<div id="progress">Loading...</div>');
     $('.ovcolumn').bind('click', toggleType);
     $('.ovrow').bind('click', toggleType);
 
+// Home
 $('#home').bind('pageAnimationEnd', function(e, info) {
     if (myScroll) {
         myScroll.destroy();
@@ -113,7 +114,26 @@ $('#home').bind('pageAnimationEnd', function(e, info) {
 	//alert('New iscroll');
 }); //pageAnimationEnd
 
+// Teams
+$('#teams').bind('pageAnimationEnd', function(e, info) {
 
+if (info.direction == 'in'){
+var mydata = '';
+    if (myScroll) {
+        myScroll.destroy();
+        myScroll = null;
+        //alert('destroy iscroll')
+    }
+
+    if ($('div#' + e.target.id + ' #wrapper').get(0)) {
+        setTimeout(function() {
+            myScroll = new iScroll($('div#' + e.target.id + ' #wrapper').get(0));
+            //alert('New iscroll');
+        }, 0);
+    }	
+}
+
+}); //pageAnimationEnd
 
     $('#teams ul li a').bind('click', function(e, data) {
     	var wkdiv=$(this).html(); 

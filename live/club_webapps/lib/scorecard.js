@@ -97,6 +97,23 @@ $('body').append('<div id="progress">Loading...</div>');
     $('.ovcolumn').bind('click', toggleType);
     $('.ovrow').bind('click', toggleType);
 
+$('#home').bind('pageAnimationEnd', function(e, info) {
+    if (myScroll) {
+        myScroll.destroy();
+        myScroll = null;
+        //alert('destroy iscroll')
+    }
+
+    if ($('div#' + e.target.id + ' #wrapper').get(0)) {
+        setTimeout(function() {
+            myScroll = new iScroll($('div#' + e.target.id + ' #wrapper').get(0));
+            //alert('New iscroll');
+        }, 0);
+    }		
+	//alert('New iscroll');
+}); //pageAnimationEnd
+
+
 
     $('#teams ul li a').bind('click', function(e, data) {
     	var wkdiv=$(this).html(); 
@@ -1055,4 +1072,19 @@ function reportResults() {
         }
     );	
    
+}
+
+function buildiscroll() {
+    if (myScroll) {
+        myScroll.destroy();
+        myScroll = null;
+        //alert('destroy iscroll')
+    }
+
+    if ($('div#' + e.target.id + ' #wrapper').get(0)) {
+        setTimeout(function() {
+            myScroll = new iScroll($('div#' + e.target.id + ' #wrapper').get(0));
+            //alert('New iscroll');
+        }, 0);
+    }
 }

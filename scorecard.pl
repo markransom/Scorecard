@@ -778,7 +778,6 @@ sub highlightchomp 	{
 
 }
 
-
 sub mycomparefiles {
 
         my($file1,$file2)=@_;

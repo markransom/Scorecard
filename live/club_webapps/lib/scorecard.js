@@ -137,9 +137,12 @@ var mydata = '';
 
     $('#teams ul li a').bind('click', function(e, data) {
     	var wkdiv=$(this).html(); 
-	wkdiv=wkdiv.replace(/.*<small>/g,"");
+    	var wkteam=$(this).html(); 
+	wkdiv=wkdiv.replace(/.*<small>\s*/g,"");
 	wkdiv=wkdiv.replace(/<\/small>.*/g,""); 
+	wkteam=wkteam.replace(/<small>.*/g,""); 
     	sessionStorage.division=wkdiv;
+    	sessionStorage.team=wkteam;
     });
 	
     $('.fixtures ul li a').bind('click', function(e, data) {
@@ -311,8 +314,10 @@ function loadVenueDetails() {
 }
 
 function loadMatch() {
-    $('#ourTeam').val(sessionStorage.ourTeam);
     $('.ourTeam').text(sessionStorage.ourTeam);
+    $('#ourTeam').val(sessionStorage.ourTeam);
+    $('.oppTeam').text(sessionStorage.oppTeam);
+    $('#oppTeam').val(sessionStorage.oppTeam);
     $('#matchDate').val('');
     $('#matchTime').val('');
     $('#matchVenue').val('');
@@ -1107,4 +1112,10 @@ function buildiscroll() {
             //alert('New iscroll');
         }, 0);
     }
+}
+
+//Send ID and Search onclick
+function send(x) {
+    mydata = x;
+	//$("#rssfeed .toolbar H1").empty();
 }
